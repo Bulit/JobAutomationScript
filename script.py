@@ -17,7 +17,7 @@ print("Folia: T, N")
 print("Antykondensat: T, N")
 print("Maszyna: Alex, Gloria, Liwia, Max, Maxima, Mona, Olimpia, Oskar, Petra")
 # user input according to legends
-prod = input("Podaj kolor, powłokę, folie, antykondensat i maszynę w jednym ciągu: ")
+prod = input("Podaj kolor, powłokę, folie, antykondensat i maszynę (pro, duo lub zwykłą) w jednym ciągu: ")
 # user input transfer to list
 dane = [prod[0:4], prod[4:6], prod[6], prod[7], prod[8:]]
 # roof type discription
