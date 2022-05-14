@@ -1,4 +1,3 @@
-import time
 import pyperclip
 import pyautogui
 import re
