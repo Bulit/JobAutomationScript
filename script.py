@@ -7,6 +7,7 @@ print("Press Ctrl-C to quit.")
 # script speed
 pyautogui.PAUSE = 0.5
 # legends
+print("Jenostki: szt, m2")
 print(
     "Kolory: 150a, 185a, 3005, 3009, 3011, 5010, 6005, 6020, 7016, 7024, 8004, 8017, 8019, 9005, 9006, 9010, 9998, 9999"
 )
@@ -17,7 +18,10 @@ print("Folia: T, N")
 print("Antykondensat: T, N")
 print("Maszyna: Alex, Gloria, Liwia, Max, Maxima, Mona, Olimpia, Oskar, Petra")
 # user input according to legends
-prod = input("Podaj kolor, powłokę, folie, antykondensat i maszynę (pro, duo lub zwykłą) w jednym ciągu: ")
+unit = input("Podaj jednostke szt / m2: ")
+prod = input(
+    "Podaj kolor, powłokę, folie, antykondensat i maszynę (pro, duo lub zwykłą) w jednym ciągu: "
+)
 # user input transfer to list
 dane = [prod[0:4], prod[4:6], prod[6], prod[7], prod[8:]]
 # roof type discription
@@ -51,23 +55,22 @@ pyautogui.FAILSAFE = True
 
 pyautogui.click(1622, 15)  # choose active window
 pyautogui.click(187, 232)  # select tab "Jednostki i kody"
-# TODO add chosing param
-pyautogui.click(46, 348)  # click if pcs(szt) comment if not
-
-# select "jednostka pomocnicza"
-pyautogui.doubleClick(340, 605)
-pyautogui.click(762, 459)
-pyautogui.click(1066, 412)
-
-# TODO add chosing param
-# pyautogui.doubleClick(331, 324) #klika jeśli m2
-# pyautogui.doubleClick(340, 605) #klika jeśli m2
-# pyautogui.click(601, 307)
+# unit type
+if unit == "szt":
+    pyautogui.click(46, 348)  # click if pcs(szt)
+    # select "jednostka pomocnicza"
+    pyautogui.doubleClick(340, 605)
+    pyautogui.click(762, 459)
+    pyautogui.click(1066, 412)
+elif unit == "m2":
+    pyautogui.doubleClick(331, 324)
+    pyautogui.doubleClick(340, 605)
+    pyautogui.click(601, 307)
 
 pyautogui.click(877, 234)  # select "Opisy i tłumaczenia" tab
 pyautogui.click(1794, 942)  # click lens
 pyautogui.click(635, 516)  # select a discription field
-pyperclip.copy(roof_type[dane[4]])  # copy description
+pyperclip.copy(roof_type[dane[4]])  # copy description according to user input
 pyautogui.hotkey("ctrl", "v")  # paste description
 pyautogui.click(947, 441)  # click save
 pyautogui.click(1122, 234)  # select "Atrybuty" tab
